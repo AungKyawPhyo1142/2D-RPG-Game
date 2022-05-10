@@ -10,6 +10,7 @@ public class NPC_OldMan extends Entity{
         direction = "down";
         speed=1;
         getImage();
+        setDialogue();
     }
     
     public void getImage(){
@@ -26,6 +27,19 @@ public class NPC_OldMan extends Entity{
         right1 = setup("npc/oldman_right_1");
         right2 = setup("npc/oldman_right_2");
         
+    }
+    
+    public void setDialogue( ) {
+        dialogues[0] = "Hello, lad.";
+        dialogues[1] = "So, you\'ve come to this island to find\n the treasure.";
+        dialogues[2] = "I remember when I was your age.\nFull of passion. But I\'m too old for that now.";
+        dialogues[3] = "I hope you found the treasure.";
+        dialogues[4] = "I was once a powerful wizard...\nNow I\'ve become a bit old.";
+    }
+    
+    @Override
+    public void speak( ) {
+        super.speak(); // call the speak() from it's parent (ENTITY)
     }
     
     @Override

@@ -24,6 +24,9 @@ public class Entity {
     public int solidAreaDefaultY;
     public boolean collisionOn = false;
 
+    public String dialogues[] = new String[20];
+    public int dialogueIndex=0;
+    
     GamePanel gp;
 
     public int actionLockCounter=0;
@@ -96,6 +99,33 @@ public class Entity {
 
             g2.drawImage(image, screenX, screenY,gp.tileSize,gp.tileSize, null);
 
+        }
+    }
+    
+    // define the speech of a character
+    public void speak(){
+
+        // if the dialogues(String) in an array is end, which is null, go back to start
+        if (dialogues[dialogueIndex] == null) {
+            dialogueIndex = 0;
+        }
+        gp.ui.currentDialogue = dialogues[dialogueIndex];
+        dialogueIndex++;
+
+        // set the direction of the NPC to the opposite of the player
+        switch (gp.player.direction) {
+            case "up":
+                direction = "down";
+                break;
+            case "down":
+                direction = "up";
+                break;
+            case "left":
+                direction = "right";
+                break;
+            case "right":
+                direction = "left";
+                break;
         }
     }
     
