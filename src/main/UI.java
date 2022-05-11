@@ -28,6 +28,8 @@ public class UI {
     int messageCounter=0;
     public boolean gameFinished = false;
 
+    // for the menu selection
+    public int commandNum=0;
     
     DecimalFormat dFormat = new DecimalFormat("#0.00");
     
@@ -57,6 +59,11 @@ public class UI {
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g2.setColor(Color.white);
         
+        // IN TITLE STATE
+        if(gp.gameState==gp.titleState){
+            drawTitleScreen();
+        }
+        
         // IN PLAY STATE
         if(gp.gameState==gp.playState){
             // do smth for the playstate
@@ -71,6 +78,71 @@ public class UI {
         if(gp.gameState==gp.dialogueState){
             drawDialogueScreen();
         }
+        
+    }
+    
+    public void drawTitleScreen(){
+        
+        // BACKGROUND COLOR
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0,0,gp.gameWidth,gp.gameHeight);
+        
+        
+        // DISPLAYING THE GAME TITLE
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 98F));
+        String text = "Adventure Island";
+        int x = getXCenteredText(text);
+        int y = gp.tileSize*3;
+
+        // DRAW TEXT SHADOW
+        g2.setColor(Color.GRAY);
+        g2.drawString(text, x+5, y+5);
+
+        // DRAW THE TEXT
+        g2.setColor(Color.white);
+        g2.drawString(text, x, y);
+        
+        // DRAW CHARACTER IMAGE IN CENTER
+        x = gp.gameWidth/2 - (gp.tileSize*2)/2;
+        y += gp.tileSize*2;
+        g2.drawImage(gp.player.down1,x,y,gp.tileSize*2,gp.tileSize*2,null);
+        
+        // ADDING MENU ITEMS        
+        // New Game
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48F));
+        text = "New Game";
+        x = getXCenteredText(text);
+        y += gp.tileSize*3.5;
+        g2.drawString(text, x, y);
+
+        // draw '>' one tile away from the text
+        if(commandNum==0){
+            g2.drawString(">",x-gp.tileSize,y);
+        }
+        
+        // Load Game
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48F));
+        text = "Load Game";
+        x = getXCenteredText(text);
+        y += gp.tileSize;
+        g2.drawString(text, x, y);
+
+        if(commandNum==1){
+            g2.drawString(">",x-gp.tileSize,y);
+        }
+
+        // Quit Game
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48F));
+        text = "Quit";
+        x = getXCenteredText(text);
+        y += gp.tileSize;
+        g2.drawString(text, x, y);
+
+        if(commandNum==2){
+            g2.drawString(">",x-gp.tileSize,y);
+        }
+
+        
         
     }
     
