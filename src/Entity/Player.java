@@ -41,6 +41,10 @@ public class Player extends Entity {
         worldY=gp.tileSize*21;
         speed=4;
         direction = "down"; // set the default dir to down, any dir is fine
+
+        // player life
+        maxLife=6;
+        life=maxLife;
     }
     
     @Override
