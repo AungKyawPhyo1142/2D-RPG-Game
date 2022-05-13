@@ -1,8 +1,8 @@
 package main;
 
+import Entity.Entity;
 import Object.OBJ_Heart;
 import Object.OBJ_Key;
-import Object.SuperObject;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -56,7 +56,7 @@ public class UI {
         }
         
         // create HUD Object
-        SuperObject heart = new OBJ_Heart(gp);
+        Entity heart = new OBJ_Heart(gp);
         heart_full = heart.image;
         heart_half = heart.image2;
         heart_blank = heart.image3;
