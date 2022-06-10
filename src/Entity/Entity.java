@@ -75,11 +75,17 @@ public class Entity {
     public int coin;
     public Entity currentWeapon;
     public Entity currentShield;
+
+    public int maxMana;
+    public int mana;
+    public Projectiles projectile;
+    public int shotAvailableCounter=0;
     
     //item attri
     public int attackValue;
     public int defenseValue;
     public String description="";
+    public int useCost;
     
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -206,7 +212,7 @@ public class Entity {
         if(dyingCounter > i*6 && dyingCounter <= i*7) { changeAlpha(g2,0f); }
         if(dyingCounter > i*7 && dyingCounter <= i*8) { changeAlpha(g2,1f); }
         if(dyingCounter > i*8) { 
-            dying=false;
+       
             alive=false;
         }
         
